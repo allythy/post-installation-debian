@@ -1,4 +1,4 @@
-# Pos-instalacao-Debian
+# Pós instalação Debian
 Script simples para instalar de programas após a instalação do Debian
 
 __Programas que o Script Instala:__
