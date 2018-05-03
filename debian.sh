@@ -1,5 +1,20 @@
 #!/bin/bash
 
+group=$(groups | grep -o 'sudo');
+
+echo -e "\e[36;1m
+	▓█████▄ ▓█████  ▄▄▄▄    ██▓███   ▒█████    ██████ 
+	▒██▀ ██▌▓█   ▀ ▓█████▄ ▓██░  ██▒▒██▒  ██▒▒██    ▒ 
+	░██   █▌▒███   ▒██▒ ▄██▓██░ ██▓▒▒██░  ██▒░ ▓██▄   
+	░▓█▄   ▌▒▓█  ▄ ▒██░█▀  ▒██▄█▓▒ ▒▒██   ██░  ▒   ██▒
+	░▒████▓ ░▒████▒░▓█  ▀█▓▒██▒ ░  ░░ ████▓▒░▒██████▒▒
+	 ▒▒▓  ▒ ░░ ▒░ ░░▒▓███▀▒▒▓▒░ ░  ░░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░
+	  ░ ▒  ▒  ░ ░  ░▒░▒   ░ ░▒ ░       ░ ▒ ▒░ ░ ░▒  ░ ░
+	   ░ ░  ░    ░    ░    ░ ░░       ░ ░ ░ ▒  ░  ░  ░  
+	      ░       ░  ░ ░                   ░ ░        ░  
+	       ░                   ░                            
+\e[0m";
+
 while [ "$voltar" != "n" ]
  do
 
@@ -32,11 +47,18 @@ echo "
               |             Pressioner (q) para sair             |
               |--------------------------------------------------|
 "
+
+if [ $group != 'sudo' ]
+then
+	echo -e '\n\e[31;1m Pacote SUDO não encontrado. Escolha a opção 21 para instalação\n \e[0m';
+fi
+
 read -p "Escolha uma das opções: " opcao
 
   case $opcao in
 
     1) sudo apt update -y && sudo apt upgrade -y
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
@@ -62,21 +84,24 @@ read -p "Escolha uma das opções: " opcao
             *) echo "Só tem dá opção 1 e 2"
             read -p "Escolha uma das opções: " sourcelist;;
           esac
-
+    echo -e;
     read -p "SoucerList atualizadar, deseja voltar para o menu inicial ? [S/N]" voltar
     clear;;
 
     3) sudo apt install ufw && sudo ufw enable
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
     4) sudo apt install build-essential
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
     5) cd /tmp &&
        wget -cO atom.deb https://atom.io/download/deb &&
        sudo dpkg -i atom.deb
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
@@ -85,6 +110,7 @@ read -p "Escolha uma das opções: " opcao
       sudo tar -xJf telegram.tar.xz -C /opt/ &&
       cd /opt/Telegram/ &&
       ./Telegram
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
@@ -97,6 +123,7 @@ read -p "Escolha uma das opções: " opcao
         cd rubygems-* &&
         sudo ruby setup.rb  &&
         gem --version
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
@@ -110,6 +137,7 @@ read -p "Escolha uma das opções: " opcao
         sudo ruby setup.rb  &&
         sudo gem install jekyll bundler &&
         jekyll -v
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
@@ -120,42 +148,52 @@ read -p "Escolha uma das opções: " opcao
        curl -sL https://deb.nodesource.com/setup_$Version.x | sudo -E bash - &&
        sudo apt install nodejs &&
        node -v
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
     10) sudo apt install vim
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
     11) sudo apt install tmux
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
     12) sudo apt install inkscape
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
     13) sudo apt install gimp
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
     14) sudo apt install audacity
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
     15) sudo apt install kdenlive
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
     16) sudo apt install vlc
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
     17) sudo apt install chromium
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
     18) sudo apt install xfce4-terminal
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
@@ -174,6 +212,7 @@ read -p "Escolha uma das opções: " opcao
         RESULT=$?
         rm composer-setup.php
         sudo mv composer.phar /usr/local/bin/composer
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
@@ -183,18 +222,21 @@ read -p "Escolha uma das opções: " opcao
         sudo apt install mariadb-server -y &&
         sudo apt install php7.0 libapache2-mod-php7.0 php7.0-mysql -y &&
         sudo systemctl restart apache2
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
     21) su &&
         apt install sudo -y &&
         adduser $USER sudo
+    echo -e;
     read -p "Programa instaldo,deseja escolher outra opção ? [S/N]" voltar
     clear;;
 
     q|Q) exit ;;
 
      *) echo "Só tem dá opção 1 até 21"
+     echo -e;
      read -p "Deseja voltar para o menu ? [S/N]" voltar
      clear;;
    esac
