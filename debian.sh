@@ -145,7 +145,7 @@ read -p "Escolha uma das opções: " opcao
 
     9) cd /tmp &&
        wget https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions &&
-       Version=$(cat index.html | grep "Node.js 9" | cut -d " " -f4 | cut -d: -f1 | sort -u) &&
+       Version=$(cat index.html | grep 'Alternatively' | tr -d [a-zA-Z] | awk '{print $3}' | cut -d: -f1 | head -n1) &&
        sudo apt install curl build-essential &&
        curl -sL https://deb.nodesource.com/setup_$Version.x | sudo -E bash - &&
        sudo apt install nodejs &&
