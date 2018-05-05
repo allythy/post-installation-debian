@@ -100,7 +100,9 @@ read -p "Escolha uma das opções: " opcao
 
     5) cd /tmp &&
        wget -cO atom.deb https://atom.io/download/deb &&
-       sudo dpkg -i atom.deb
+       sudo dpkg -i atom.deb &&
+	   sudo apt -f install &&
+	   sudo dpkg -i atom.deb
     echo -e;
     read -p "Programa instalado, deseja escolher outra opção ? [S/N]" voltar
     clear;;
